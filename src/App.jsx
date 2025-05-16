@@ -18,7 +18,7 @@ function App() {
   },[])
 
   return (
-    <div className="h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col">
       <Header itemCount={carts.length}/>
       <div className="flex flex-1">
         <ProductList products={products}/>
