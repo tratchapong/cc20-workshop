@@ -1,8 +1,9 @@
 import React from 'react'
 
-function CartCount() {
+function CartCount(props) {
+  const {itemCount} = props
   return (
-    <div>CartCount</div>
+    <div>CartCount : {itemCount}</div>
   )
 }
 

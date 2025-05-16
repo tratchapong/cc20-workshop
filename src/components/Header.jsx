@@ -1,13 +1,14 @@
 import React from 'react'
 import CartCount from './CartCount'
 
-function Header() {
+function Header(props) {
+  const {itemCount} = props
   return (
-    <div className='flex justify-between h-15 bg-amber-400'>
+    <div className='flex justify-between h-20 bg-amber-400'>
       <div>
         Logo, Brand
       </div>
-      <CartCount />
+      <CartCount itemCount={itemCount}/>
     </div>
   )
 }
