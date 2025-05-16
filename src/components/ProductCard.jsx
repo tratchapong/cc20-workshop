@@ -10,15 +10,15 @@ function ProductCard(props) {
           src={image}
           alt={title} />
       </figure>
-      <div className="card-body">
-        <h2 className="card-title line-clamp-1 overflow-hidden">{title}</h2>
+      <div className="card-body p-4">
+        <h2 className="card-title text-center line-clamp-1 overflow-hidden">{title}</h2>
         <p className='text-sm text-pink-400 text-center'>{category}</p>
         <p className={`cursor-pointer ${showDesc ? '' : 'line-clamp-2'}` } 
           onClick={()=>setShowDesc(prv=>!prv)}
         >{description}</p>
-        <p className='text-slate-700 text-2xl'>฿{price}</p>
-        <div className="card-actions justify-end">
-          <button className="btn btn-primary"
+        <div className="card-actions justify-between items-baseline pt-2">
+          <p className='text-slate-500 text-xl'>฿{price}</p>
+          <button className="btn btn-xs btn-primary"
             onClick={()=>addToCart(id, title, price)}
           >Add to Cart</button>
         </div>
