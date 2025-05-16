@@ -18,6 +18,7 @@ function App() {
   useEffect( ()=>{
     fetchProducts()
   },[])
+  // ถ้า add สินค้าเดิมซ้ำให้เพิ่มจำนวนแทน..
   const addToCart = (id, title, price) => {
     let newItem = { id: id, title: title, price: price, quantity : 1}
     setCarts([...carts, newItem])

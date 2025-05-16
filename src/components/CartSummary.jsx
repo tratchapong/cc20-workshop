@@ -11,7 +11,7 @@ function CartSummary(props) {
           <CartItem key={el.id} item={el} />
         ))}
       </div>
-      <pre>{JSON.stringify(carts, null, 2)}</pre>
+      {/* <pre>{JSON.stringify(carts, null, 2)}</pre> */}
     </div>
   )
 }
