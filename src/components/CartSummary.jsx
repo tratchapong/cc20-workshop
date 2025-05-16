@@ -3,7 +3,7 @@ import CartItem from './CartItem'
 
 function CartSummary(props) {
   const { carts, decQuantity, addToCart } = props
-  const total = carts.reduce( (a,c) => a+=c.price*c.quantity, 0)
+  const total = carts.reduce((a, c) => a += c.price * c.quantity, 0)
   const vat = total * 0.07
   const finalTotal = total + vat
   return (
@@ -16,20 +16,23 @@ function CartSummary(props) {
             addToCart={addToCart} />
         ))}
       </div>
-      <div className="divider">Total</div>
-      <div className='flex justify-between px-1.5 flex-1'>
-        <p className='font-bold'>Total</p>
-        <p>฿{total.toFixed(2)}</p>
-      </div>
-      <div className='flex justify-between px-1.5 flex-1'>
-        <p className='font-bold'>VAT</p>
-        <p>฿{vat.toFixed(2)}</p>
-      </div>
-      <div className='flex justify-between px-1.5 flex-1'>
-        <p className='font-bold'>Final Total</p>
-        <p className='underline' >฿{finalTotal.toFixed(2)}</p>
-      </div>
-      
+      {carts.length > 0 && (
+        <>
+          <div className="divider">Total</div>
+          <div className='flex justify-between px-1.5 flex-1'>
+            <p className='font-bold'>Total</p>
+            <p>฿{total.toFixed(2)}</p>
+          </div>
+          <div className='flex justify-between px-1.5 flex-1'>
+            <p className='font-bold'>VAT</p>
+            <p>฿{vat.toFixed(2)}</p>
+          </div>
+          <div className='flex justify-between px-1.5 flex-1'>
+            <p className='font-bold'>Final Total</p>
+            <p className='underline decoration-double' >฿{finalTotal.toFixed(2)}</p>
+          </div>
+        </>
+      )}
     </div>
   )
 }
