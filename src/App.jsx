@@ -48,7 +48,7 @@ function App() {
     <div className="h-screen flex flex-col max-w-7xl mx-auto">
       <Header itemCount={carts.length}/>
       <div className="flex h-11/12">
-        <ProductList products={products} addToCart={addToCart}/>
+        <ProductList products={products} addToCart={addToCart} carts={carts}/>
         <CartSummary carts={carts} decQuantity={decQuantity} addToCart={addToCart} />
       </div>
     </div>
