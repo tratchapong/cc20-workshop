@@ -10,9 +10,12 @@ function App() {
   // cart = { id, price, title, quantity}
 
   const fetchProducts = () => {
-    fetch('http://localhost:8000/products')
-      .then(resp => resp.json())
-      .then(data => setProducts(data))
+    // fetch('http://localhost:8000/products')
+    console.log('fetchProduct')
+    fetch('https://dummyjson.com/products')
+      .then(res => res.json())
+      .then(data => {setProducts(data.products); console.log(data)})
+      .catch(err => console.log(err))
   }
 
   useEffect(() => {
@@ -55,7 +58,7 @@ function App() {
     <div className="h-screen flex flex-col max-w-7xl mx-auto">
       <Header itemCount={carts.length} />
       <div className="flex h-11/12">
-        <ProductList products={products} addToCart={addToCart} carts={carts} removeFromCart={removeFromCart}/>
+        <ProductList products={products} addToCart={addToCart} carts={carts} removeFromCart={removeFromCart} />
         <CartSummary carts={carts} decQuantity={decQuantity} addToCart={addToCart} />
       </div>
     </div>

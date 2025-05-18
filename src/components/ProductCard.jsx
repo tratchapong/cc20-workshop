@@ -2,12 +2,12 @@ import React, { useState } from 'react'
 
 function ProductCard(props) {
   const [showDesc, setShowDesc] = useState(false)
-  const { removeFromCart, haveSelected, addToCart, productItem: { id, category, description, title, image, price, rating } } = props
+  const { removeFromCart, haveSelected, addToCart, productItem: { id, category, description, title, images, price, rating } } = props
   return (
     <div className="card bg-base-100 w-60 shadow-sm pt-4">
       <figure className='h-36 w-2/3 mx-auto'>
         <img className='h-full w-full object-contain'
-          src={image}
+          src={images[0]}
           alt={title} />
       </figure>
       <div className="card-body p-4">

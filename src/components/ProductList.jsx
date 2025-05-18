@@ -9,7 +9,7 @@ function ProductList(props) {
     <div className='w-2/3 bg-amber-200 ps-8 overflow-auto'>
       <h2 className='text-2xl rounded py-2 text-slate-600'>Product List</h2>
       <div className="flex gap-3 flex-wrap">
-        {products.map(el => (
+        {products.length && products.map(el => (
           <ProductCard key={el.id} productItem={el} addToCart={addToCart} 
           haveSelected={selected.includes(el.id)} removeFromCart={removeFromCart}/>
         ))}
