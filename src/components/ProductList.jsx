@@ -2,7 +2,7 @@ import { useState } from 'react'
 import ProductCard from './ProductCard'
 
 function ProductList(props) {
-  const { products, addToCart, carts } = props
+  const { products, addToCart, carts, removeFromCart} = props
   const selected = carts.map(el => el.id)
   console.log(products[0])
   return (
@@ -10,7 +10,8 @@ function ProductList(props) {
       <h2 className='text-2xl rounded py-2 text-slate-600'>Product List</h2>
       <div className="flex gap-3 flex-wrap">
         {products.map(el => (
-          <ProductCard key={el.id} productItem={el} addToCart={addToCart} haveSelected={selected.includes(el.id)}/>
+          <ProductCard key={el.id} productItem={el} addToCart={addToCart} 
+          haveSelected={selected.includes(el.id)} removeFromCart={removeFromCart}/>
         ))}
       </div>
     </div>

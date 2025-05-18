@@ -11,21 +11,21 @@ function App() {
 
   const fetchProducts = () => {
     fetch('http://localhost:8000/products')
-    .then(resp => resp.json())
-    .then(data => setProducts(data))
+      .then(resp => resp.json())
+      .then(data => setProducts(data))
   }
 
-  useEffect( ()=>{
+  useEffect(() => {
     fetchProducts()
-  },[])
+  }, [])
   // ถ้า add สินค้าเดิมซ้ำให้เพิ่มจำนวนแทน..
   const addToCart = (id, title, price) => {
     let idx = carts.findIndex(el => el.id === id) // not found = -1
     let newItem
-    if(idx === -1) {
-      newItem = { id: id, title: title, price: price, quantity : 1}
+    if (idx === -1) {
+      newItem = { id: id, title: title, price: price, quantity: 1 }
       setCarts([...carts, newItem])
-    }else {
+    } else {
       const clonedCart = [...carts]
       clonedCart[idx].quantity += 1
       setCarts(clonedCart)
@@ -36,19 +36,26 @@ function App() {
     // ลดจำนวน Quantity ของ item ใน cart
     let idx = carts.findIndex(el => el.id === id) // not found = -1
     const clonedCart = [...carts]
-    if(clonedCart[idx].quantity > 1) {
-      clonedCart[idx].quantity -=1
+    if (clonedCart[idx].quantity > 1) {
+      clonedCart[idx].quantity -= 1
     } else {
-      clonedCart.splice(idx,1)
+      clonedCart.splice(idx, 1)
     }
+    setCarts(clonedCart)
+  }
+
+  const removeFromCart = id => {
+    let idx = carts.findIndex(el => el.id === id) // not found = -1
+    const clonedCart = [...carts]
+    clonedCart.splice(idx, 1)
     setCarts(clonedCart)
   }
 
   return (
     <div className="h-screen flex flex-col max-w-7xl mx-auto">
-      <Header itemCount={carts.length}/>
+      <Header itemCount={carts.length} />
       <div className="flex h-11/12">
-        <ProductList products={products} addToCart={addToCart} carts={carts}/>
+        <ProductList products={products} addToCart={addToCart} carts={carts} removeFromCart={removeFromCart}/>
         <CartSummary carts={carts} decQuantity={decQuantity} addToCart={addToCart} />
       </div>
     </div>
