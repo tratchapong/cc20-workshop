@@ -2,17 +2,28 @@ import Header from "./components/Header"
 import ProductList from './components/ProductList'
 import CartSummary from './components/CartSummary'
 import { useEffect, useState } from "react"
+// import {products} from './assets/db/products.json'
 
 function App() {
   const [products, setProducts] = useState([])
   const [carts, setCarts] = useState([])
+  const [error, setError] = useState(null)
 
   // cart = { id, price, title, quantity}
 
+  // const fetchProducts = () => {
+  //   fetch('http://localhost:8000/products')
+  //     .then(resp => resp.json())
+  //     .then(data => setProducts(data))
+  // }
+
   const fetchProducts = () => {
-    fetch('http://localhost:8000/products')
+    fetch('./db/products.json')
       .then(resp => resp.json())
-      .then(data => setProducts(data))
+      .then(data => {setProducts(data.products)
+        console.log(data)
+      })
+      .catch(err => setError(err))
   }
 
   useEffect(() => {
@@ -51,11 +62,17 @@ function App() {
     setCarts(clonedCart)
   }
 
+  if(error) {
+    return <div className="text-5xl">Error : {error}</div>
+  }
+
   return (
     <div className="h-screen flex flex-col max-w-7xl mx-auto">
       <Header itemCount={carts.length} />
       <div className="flex h-11/12">
-        <ProductList products={products} addToCart={addToCart} carts={carts} removeFromCart={removeFromCart}/>
+        {products.length && (
+          <ProductList products={products} addToCart={addToCart} carts={carts} removeFromCart={removeFromCart}/>
+        )}
         <CartSummary carts={carts} decQuantity={decQuantity} addToCart={addToCart} />
       </div>
     </div>
