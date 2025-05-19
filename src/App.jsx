@@ -20,9 +20,7 @@ function App() {
   const fetchProducts = () => {
     fetch('./db/products.json')
       .then(resp => resp.json())
-      .then(data => {setProducts(data.products)
-        console.log(data)
-      })
+      .then(data => setProducts(data.products))
       .catch(err => setError(err))
   }
 
