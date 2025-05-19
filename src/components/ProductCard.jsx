@@ -18,14 +18,14 @@ function ProductCard(props) {
         >{description}</p>
         <div className="card-actions justify-between items-baseline pt-2">
           <p className='text-slate-500 text-xl'>฿{price}</p>
-          <button className="btn btn-xs btn-primary"
+          {!haveSelected && <button className="btn btn-xs btn-primary"
             onClick={() => addToCart(id, title, price)}
             disabled={haveSelected}
-          >Add to Cart</button>
+          >Add to Cart</button>}
           {haveSelected && (
-            <div className="btn btn-circle btn-outline btn-sm btn-error"
+            <div className="btn btn-xs btn-outline  btn-error"
               onClick={()=>removeFromCart(id)}>
-              X
+              Cancel
             </div>
           )}
         </div>
