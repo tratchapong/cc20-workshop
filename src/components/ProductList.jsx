@@ -16,10 +16,10 @@ function ProductList(props) {
       <h2 className='text-2xl rounded py-2 text-slate-600'>Product List</h2>
       <div className="join mb-2">
         {allTags.map(el => (
-          <button key={el} className="btn btn-sm btn-info btn-outline join-item"
+          <button key={el} className={ `btn btn-sm btn-info join-item ${filterText===el ? 'scale-110': 'btn-outline opacity-80'}` }
             onClick={()=>setFilterText(el)}>{el}</button>
         ))}
-          <button className="btn btn-sm btn-info btn-outline join-item"
+          <button className={ `btn btn-sm btn-info join-item ${filterText==='' ? 'scale-110': 'btn-outline opacity-80'}` }
             onClick={()=>setFilterText('')}>All</button>
       </div>
       <div className="flex gap-3 flex-wrap">
