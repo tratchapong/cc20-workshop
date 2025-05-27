@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import Rating from './Rating'
 
 function ProductCard(props) {
   const [showDesc, setShowDesc] = useState(false)
@@ -11,6 +12,7 @@ function ProductCard(props) {
           alt={title} />
       </figure>
       <div className="card-body p-4">
+        <Rating rating={rating}/>
         <h2 className="card-title text-center line-clamp-1 overflow-hidden">{title}</h2>
         <p className='text-sm text-pink-400 text-center'>{category}</p>
         <p className={`cursor-pointer ${showDesc ? '' : 'line-clamp-2'}`}
