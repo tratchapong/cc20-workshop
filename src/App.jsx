@@ -7,6 +7,7 @@ import { useEffect, useState } from "react"
 function App() {
   const [products, setProducts] = useState([])
   const [carts, setCarts] = useState([])
+  const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
 
   // cart = { id, price, title, quantity}
@@ -17,13 +18,23 @@ function App() {
   //     .then(data => setProducts(data))
   // }
 
-  const fetchProducts = () => {
-    fetch('./db/products.json')
-      .then(resp => resp.json())
-      .then(data => setProducts(data.products))
-      .catch(err => setError(err))
-  }
+  // const fetchProducts = () => {
+  //   fetch('./db/products.json')
+  //     .then(resp => resp.json())
+  //     .then(data => {
+  //       console.log(data.products)
+  //       setProducts(data.products)
+  //     })
+  //     .catch(err => setError(err))
+  // }
 
+  const fetchProducts = () => {
+    setLoading(true)
+    fetch('https://fakestoreapi.com/products').then(response => response.json())
+    .then(data => setProducts(data))
+    .catch(error => setError(error))
+    .finally(()=>setLoading(false))
+  }
   useEffect(() => {
     fetchProducts()
   }, [])
@@ -60,8 +71,12 @@ function App() {
     setCarts(clonedCart)
   }
 
+  if(loading) {
+    return <div className="text-5xl text-slate-700">Loading...</div>
+  }
+
   if(error) {
-    return <div className="text-5xl">Error : {error}</div>
+    return <div className="text-5xl text-red-400">Error : {error}</div>
   }
 
   return (

@@ -14,6 +14,7 @@ function ProductList(props) {
 
   const filterProduct = products.filter(el => filterText===''? true : el.category === filterText)
   const showProduct = filterProduct.filter(el => searchText===''? true : el.title.toUpperCase().includes(searchText.toUpperCase()) )
+  // console.log(showProduct)
   return (
     <div className='w-2/3 bg-amber-200 ps-8 pt-2 overflow-auto'>
       {/* <h2 className='text-2xl rounded py-2 text-slate-600'>Product List</h2> */}

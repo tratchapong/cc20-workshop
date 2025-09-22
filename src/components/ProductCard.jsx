@@ -4,6 +4,7 @@ import Rating from './Rating'
 function ProductCard(props) {
   const [showDesc, setShowDesc] = useState(false)
   const { removeFromCart, haveSelected, addToCart, productItem: { id, category, description, title, image, price, rating } } = props
+  // console.log(image)
   return (
     <div className="card bg-base-100 w-60 shadow-sm pt-4">
       <figure className='h-36 w-2/3 mx-auto'>
