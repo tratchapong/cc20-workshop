@@ -7,7 +7,7 @@ function CartSummary(props) {
   const vat = total * 0.07
   const finalTotal = total + vat
   return (
-    <div className='w-1/3 min-w-md bg-orange-100 p-2'>
+    <div className='w-1/3 min-w-md bg-orange-100 p-2 text-amber-900'>
       <h2 className='text-2xl rounded py-2 text-slate-600'>Cart Items :</h2>
       {carts.length === 0 && <p>Empty cart</p>}
       <div className="flex flex-col gap-2">
@@ -18,7 +18,7 @@ function CartSummary(props) {
       </div>
       {carts.length > 0 && (
         <>
-          <div className="divider">Total</div>
+          <div className="divider divider-error opacity-20">Total</div>
           <div className='flex justify-between px-1.5 flex-1'>
             <p className='font-bold'>Total</p>
             <p>฿{total.toFixed(2)}</p>
